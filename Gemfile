@@ -1,7 +1,10 @@
 source "https://rubygems.org"
 
 # Specify your gem's dependencies in animes.gemspec
-gemspec
+
 
 gem "rake", "~> 12.0"
 gem "minitest", "~> 5.0"
+gem "rest-client"
+gem "json"
+gem "pry"
