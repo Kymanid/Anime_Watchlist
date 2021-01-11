@@ -2,6 +2,5 @@
 
 require "./lib/enviroment"
 
-API.get_anime
 
 CLI.new.start

@@ -19,11 +19,14 @@ class Episode
         @@all
     end
 
+  
+
     def self.search_episodes(episode_title)
         self.all.find do |episode|
             episode.title == episode_title
         end
     end
+
 
 
  

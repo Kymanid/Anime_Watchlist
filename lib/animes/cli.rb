@@ -41,7 +41,7 @@ class CLI
             puts ""
             puts "----EPISODE LIBRARY----"
             puts ""
-        Episode.all.each.with_index(1) do |episode, i|
+        Episode.all.each.with_index(+1) do |episode, i|
             puts "#{i}. #{episode.title}"
             puts ""
         end
@@ -56,6 +56,7 @@ class CLI
         selection = user_input
         
         episode = Episode.search_episodes(selection)
+        
         anime_details(episode)
 
     end
@@ -78,12 +79,12 @@ class CLI
 
     # Phrase to exit the app
     def goodbye
-        puts "Hate to see you go, hope you enjoyed your experience! See you soon!"
+        puts "Hate to see you go, hope you enjoyed your experience! See you space cowboy!"
     end
 
     # Phrase when incorrect input is made
     def invalid
-        puts "Hmm...Try again, Cowboy!"
+        puts "Hmm...Try again, cowboy!"
         anime_menu
     end
 
@@ -106,3 +107,4 @@ class CLI
     end
 
 end
+

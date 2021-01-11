@@ -8,3 +8,4 @@ require 'pry'
 require 'bundler'
 Bundler.require
 
+require 'colorize'
