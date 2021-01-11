@@ -1,11 +1,10 @@
 class CLI
 
-    # Intro 
+ 
     def start
-        puts "Welcome to Beboptopia!"
-        puts "Let's start with your name:"
+        puts "Welcome Space Cowboy!"
+        puts "I don't think we've met before, what's your name?"
         API.get_anime
-        #binding.pry
         greet(user_input)
     end
 
@@ -13,14 +12,18 @@ class CLI
         gets.strip
     end
     
-    # Greeting | Menu options | Overview + Episode list 
+ 
     def greet(name)
-        puts "I love your name #{name}! What would you like to do today?"
-        puts "Please type 'e' for 'episode list', or 'o' for 'Overview'. Otherwise type 'exit' to leave the app!"
+        puts ""
+        puts "#{name}?! Are you a bounty hunter? Actually, i'd rather not know....hahaha!"
+        puts "Anywho.....What can I help you with today #{name}?"
+        puts ""
+        puts "--------------- Please Input one of the following options -----------------"
+        puts ""
+        puts " 'e' = Access episode collection | 'o' = Overview | 'exit' = close the app "
         anime_menu
     end
     
-    # Overview Option 'o'
     def anime_overview
         puts ""
         puts ""
@@ -32,30 +35,28 @@ class CLI
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         puts ""
         puts ""
-        puts "If you like what your reading, input 'e' to check out the Cowboy Bebops episode library!"
+        puts "If you like what you've read so far, input 'e' = Access episode collection"
         anime_menu
     end
     
-    # EPISODE LIBARARY LIST - 26 Episodes 
     def bebop_episode_menu
             puts ""
             puts "----EPISODE LIBRARY----"
             puts ""
-        Episode.all.each.with_index(+1) do |episode, i|
-            puts "#{i}. #{episode.title}"
+        Episode.all.each.with_index(1) do |episode|
+            puts "#{episode.episode_id}"
             puts ""
         end
         list_selection
     end
     
-
-    # EPISODE SELECTION INPUT
     def list_selection
-        puts "Please select a episode title for more details"
+        puts "Please select a episode # for more details"
 
         selection = user_input
         
-        episode = Episode.search_episodes(selection)
+        episode = Episode.find_by_id(selection)
+      
         
         anime_details(episode)
 
@@ -72,17 +73,17 @@ class CLI
         puts ""
         puts ""
         puts ""
-        puts "press 'e' to reload list. or input 'exit' to leave the app"
+        puts "Please select one of the following to continue......"
+        puts "'e' = reload list to select another ep. | 'o' = Overview | 'exit' to leave the app"
         anime_menu
     end
         
-
-    # Phrase to exit the app
     def goodbye
-        puts "Hate to see you go, hope you enjoyed your experience! See you space cowboy!"
+        puts "Hate to see you go, hope you enjoyed your experience! See you space cowboy!" 
+        exit
+        
     end
 
-    # Phrase when incorrect input is made
     def invalid
         puts "Hmm...Try again, cowboy!"
         anime_menu

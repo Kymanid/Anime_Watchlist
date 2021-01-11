@@ -21,13 +21,12 @@ class Episode
 
   
 
-    def self.search_episodes(episode_title)
+    def self.find_by_id(episode_id)
         self.all.find do |episode|
-            episode.title == episode_title
+            episode.episode_id.to_s == episode_id
         end
     end
-
-
+    
 
  
 
