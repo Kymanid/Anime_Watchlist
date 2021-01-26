@@ -44,7 +44,7 @@ class CLI
             puts "----EPISODE LIBRARY----"
             puts ""
         Episode.all.each.with_index(1) do |episode|
-            puts "#{episode.episode_id}"
+            puts "#{episode.episode_id} - #{episode.title}"
             puts ""
         end
         list_selection
@@ -55,17 +55,19 @@ class CLI
 
         selection = user_input
         
-        episode = Episode.find_by_id(selection)
+        episode = Episode.search_episodes(selection)
       
         
         anime_details(episode)
+        
 
     end
 
     def anime_details(episode)
+      
         puts ""
         puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-        puts "Episode: #{episode.episode_id}"
+        puts "Episode: #{episode.episode_id}" 
         puts "Title: #{episode.title}"
         puts "Aired Date: #{episode.aired}"
         puts "Video link: #{episode.video_url}"
@@ -76,8 +78,9 @@ class CLI
         puts "Please select one of the following to continue......"
         puts "'e' = reload list to select another ep. | 'o' = Overview | 'exit' to leave the app"
         anime_menu
-    end
         
+    end
+    
     def goodbye
         puts "Hate to see you go, hope you enjoyed your experience! See you space cowboy!" 
         exit

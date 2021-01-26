@@ -4,3 +4,4 @@ require "./lib/enviroment"
 
 
 CLI.new.start
+
